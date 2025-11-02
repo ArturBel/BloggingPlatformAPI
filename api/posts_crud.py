@@ -39,9 +39,6 @@ def specific_post(request, pk):
         return Response(data=post.data, status=status.HTTP_200_OK)
     elif request.method == 'PUT':
         updated_post = PostSerializer(postObject, data=request.data, partial=True)
-
-        # IF TITLE OR DESCRIPTION ARE SAME, GIVES INVALID INPUT ERROR
-
         if updated_post.is_valid():
             updated_post.save()
             return Response(data=updated_post.data, status=status.HTTP_200_OK)
