@@ -30,6 +30,19 @@ class AuthTest(APITestCase):
         self.assertIn('username', response.data)
         self.assertIn('email', response.data)
 
+        # checking superuser registration
+        superuser_data = {
+            "email": "test@email.com",
+            "username": "Test",
+            "password": "testtest",
+            "is_staff": True,
+            "is_superuser": True
+        }
+        response_superuser = self.client.post(register_url, superuser_data, format='json')
+
+        self.assertEqual(response_superuser.status_code, status.HTTP_401_UNAUTHORIZED)
+        self.assertEqual(User.objects.count(), 1) 
+
 
         # LOGIN TESTING
         # preparing login request

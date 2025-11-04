@@ -1,6 +1,12 @@
-from django.urls import path
+from django.urls import path, include
 from . import auth, posts_crud
 from rest_framework_simplejwt.views import TokenRefreshView
+from rest_framework.routers import DefaultRouter
+from .superuser import AdminUserViewSet
+
+
+admin_router = DefaultRouter()
+admin_router.register(r'users', AdminUserViewSet, basename='Users administration')
 
 
 urlpatterns = [

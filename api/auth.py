@@ -17,10 +17,15 @@ def register(request):
     # creating a new user from json data
     user_serializer = UserSerializer(data=request.data)
 
+    # checking if prohibited fields are not present (or false)
+    if request.data.get('is_staff') is True or request.data.get('is_superuser') is True:
+        return Response(data={'msg': 'You do not have permission to register as superuser or staff.'}, status=status.HTTP_401_UNAUTHORIZED)
+
     # checking if json data is valid
     if user_serializer.is_valid():
         # hashing the password before storing in the database
         new_user = user_serializer.save()
+        
         # saving new user, generation tokens and outputting result
         new_user.save()
         tokens = get_tokens_for_user(user=new_user)
@@ -36,7 +41,7 @@ def login(request):
     email = data['email']
     password = data['password']
 
-    # checking if all fields are present
+    # checking if all required fields are present
     if not email or not password:
         return Response(data={'msg': 'Email and password fields are required'}, status=status.HTTP_400_BAD_REQUEST)
     
