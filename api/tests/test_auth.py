@@ -21,7 +21,7 @@ class AuthTest(APITestCase):
         self.assertEqual(User.objects.count(), 1)  # user is saved into database
         self.assertIn('access', response.data['tokens'])  # access token is created
         self.assertIn('refresh', response.data['tokens'])  # refresh token is created
-        self.assertNotEqual(User.objects.get(id=1).password, 'testtest')  # checking that password is hashed
+        self.assertNotEqual(User.objects.first().password, 'testtest')  # checking that password is hashed
 
         # checking same email and username registration
         response_duplicate = self.client.post(register_url, data, format='json')
