@@ -91,15 +91,15 @@ Register using the 'POST' method:
 POST /register/
 {
 # required fields
-"email": "user@email.com",
-"username": "Username",
-"password": "password",
+	"email": "user@email.com",
+	"username": "Username",
+	"password": "password",
 # optional fields
-"first_name": "User First Name",
-"last_name": "User Last Name",
+	"first_name": "User First Name",
+	"last_name": "User Last Name",
 # prohibited fields
-"is_staff": false,
-"is_superuser": false
+	"is_staff": false,
+	"is_superuser": false
 }
 ```
 
