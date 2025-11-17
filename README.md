@@ -12,7 +12,7 @@ BloggingPlatformAPI/
 │   ├── tests/              # directory with test scripts
 |   |   ├── test_admin.py   # script to test admin endpoint
 |   |   ├── test_auth.py    # script to test login and registration
-|   |   ├── test_crud.py    # script to test crud operations
+|   |   └── test_crud.py    # script to test crud operations
 |   ├── __init__.py
 |   ├── admin.py            # admin configuration and registration
 │   ├── apps.py             # app configuration
@@ -21,13 +21,13 @@ BloggingPlatformAPI/
 |   ├── posts_crud.py       # crud/posting views
 |   ├── serializers.py      # serializers for models
 |   ├── superuser.py        # superuser view
-|   ├── urls.py             # app's urls registration
+|   └── urls.py             # app's urls registration
 ├── bloggingplatform/
 |   ├── __init__.py
 |   ├── asgi.py             # asgi configuration
 |   ├── settings.py         # settings of project
 |   ├── urls.py             # project's urls registration
-|   ├── wsgi.py             # wsgi configuration
+|   └── wsgi.py             # wsgi configuration
 ├── .env                    # secrets are stored here
 ├── .env.example            # example of how .env should look like
 ├── .gitignore              # ignored files
